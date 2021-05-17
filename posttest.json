@@ -1,0 +1,44 @@
+[{
+	"question": "Transmittance is the ratio of the intensity of transmitted light to that of incident light.",
+	"answers": {
+		"a": "True",
+		"b": "False"
+	},
+	"correctAnswer": "a"
+}, {
+	"question": "A calibration curve is the plot of ",
+	"answers": {
+		"a": "Absorbance of solutions against time",
+		"b": "Time against concentration of solutions",
+		"c": "Absorbance against concentration of solutions",
+		"d": "Concentration of solutions against time"
+	},
+	"correctAnswer": "c"
+}, {
+	"question": "As per Beer - Lambert’s Law the amount of light absorbed is _________________ the concentration of the solution. ",
+	"answers": {
+		"a": "Directly proportional",
+		"b": "Inversely proportional",
+		"c": "Greater than",
+		"d": "Smaller than"
+	},
+	"correctAnswer": "a"
+}, {
+	"question": "The optical density is ______________ to concentration of the substance.",
+	"answers": {
+		"a": "Inversely proportional",
+		"b": "Directly proportional",
+		"c": "Linearly proportional",
+		"d": "None of the above"
+	},
+	"correctAnswer": "c"
+}, {
+	"question": "Blank solution is used in colorimetric estimation to",
+	"answers": {
+		"a": "Check the instrument",
+		"b": "Nullify the absorbance caused due to the colouring impurities present in the reagents",
+		"c": "Nullify the error caused by the instrument",
+		"d": "Nullify the error caused by colour"
+	},
+	"correctAnswer": "b"
+}]

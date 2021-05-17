@@ -1,0 +1,44 @@
+[{
+	"question": "In this method, the sulphates present are estimated in the form of ",
+	"answers": {
+		"a": "Calcium Sulphate",
+		"b": "Magnesium Sulphate ",
+		"c": "Sodium Sulphate",
+		"d": "Barium Sulphate "
+	},
+	"correctAnswer": "d"
+}, {
+	"question": "The turbidity is measured using UV-visible spectrometer at ",
+	"answers": {
+		"a": "400nm",
+		"b": "410nm",
+		"c": "420nm",
+		"d": "430nm"
+	},
+	"correctAnswer": "c"
+}, {
+	"question": "The presence of calcium sulphate in water causes corrosion. ",
+	"answers": {
+		"a": "True",
+		"b": "False"
+	},
+	"correctAnswer": "a"
+}, {
+	"question": "The method used to test sulfate in water in this is ",
+	"answers": {
+		"a": "Spectrometric method",
+		"b": "Turbidimetric method",
+		"c": "Nephelometric method",
+		"d": "None of the above"
+	},
+	"correctAnswer": "b"
+}, {
+	"question": "The minimum detectable concentration by turbidimetric method is ",
+	"answers": {
+		"a": "1ppm",
+		"b": "5ppm",
+		"c": "10ppm",
+		"d": "None of the above"
+	},
+	"correctAnswer": "a"
+}]
