@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SOLVE</title>
+<script type="text/javascript" src="js/jquerymin.js"></script>
+<script src="js/canvasjs.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!--same-->
+<link rel="stylesheet" href="css/sw.css" />
+<script type="text/javascript" src="js/sw.js"></script>
+
+<script>
+var simsubscreennum=0;
+var temp=0;
+</script>
+<style>
+.popup
+{
+	border-radius:5px;
+	background-color:black;
+	color:white;
+	padding:5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+  <!-- text-align:center; -->
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#t11-1.td,th
+{
+	border:1px solid black;
+	padding:15px;
+}
+
+#g1:hover , #g2:hover
+{
+	background-color:#DBF3FA;
+}
+</style>
+</head>
+
+<body style="margin:0; font-family:verdana;">
+<div id="simscreen">
+<div id="title"><h3>Determination of Sulphate in Water</h3></div>
+
+<div class="simsubscreen" id="canvas0" >
+<h4 class="incanvas">Objective:</h4>
+<p class="incanvas" style="font-size:14px;">To determine Sulphate ion concentration in sample by Turbidimetric method.</p><br/>
+<h4 class="incanvas">Apparatus used:</h4>
+<p class="incanvas" style="font-size:14px;">Spectrophotometer, Cuvettes, Pipette, Conical flasks, Magnetic stirrer, Spatula etc.</p></br>
+
+&nbsp;<span class="tooltip" style="border-bottom:1px dotted; position:absolute; top:140px;"><strong>Solutions used</strong>
+<span  class="tooltiptext" style=" font-size:15px; text-align:justify;">Sulphate solution, Buffer solution, Barium chloride crystals, Distilled water, Water sample</span></span>
+
+&nbsp;<span class="tooltip" style="border-bottom:1px dotted ; color:red; position:absolute;  left:170px; top:140px;"><strong>Description</strong>
+<span  class="tooltiptext" style=" font-size:15px; text-align:justify; width:450px;"><strong style="color:red;">Sulphates</strong> is widely distributed in nature and may be present in natural waters in concentration ranging from few hundred to several thousand mg/l. </br>
+Sulphates occur naturally in numerous minerals, including barite, epsomite and gypsum. These dissolved minerals contribute to the mineral content of drinking-water.</span></span>
+
+<img style="position:absolute; left:170px; top:335px;" title="Table" src="images/table.png" />
+<img style="position:absolute; left:10px; top:172.5px;" title="" src="images/human.png" />
+<img style="position:absolute; left:230px; top:275px; width:45px; " title="Conical flask" src="images/1-4.png" />
+<img style="position:absolute; left:300px; top:310px; width:15px;" title="Cuvette" src="images/1-2.png" />
+<img style="position:absolute; left:185px; top:359px; width:150px; " title="Graduated pipette" src="images/1-5.png" />
+<img style="position:absolute; left:340px; top:340px; width:65px;" title="Spatula" src="images/spatula.png" />
+<img style="position:absolute; left:410px; top:240px; width:285px;" title="Spectrophotometer" src="images/1.png" />
+
+</div>
+
+<div id="canvas1" style="visibility:hidden;">
+<h1 id="1-1" style="position:absolute; left:90px; top:250px; color:grey; display:none;">Preparation of Standard Solution</h1>
+</div>
+
+<div class="simsubscreen" id="canvas2" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;1&nbsp;</span>
+<p class="steptext">&nbsp;Prepare a series of standards of 100ml by accurately pipetting calculated volumes of standard Sulphate solution to measure 5 to 40 mg/l in conical flasks.</p>
+<div id="2-52" style="position:absolute; left:495px; top:370px; background-color:#F2F2F2; border-top:1.5px solid #D3D3D3; width:5.5px; height:75px;"></div>
+<div id="2-51" style="position:absolute; left:495.5px; top:360px; background-color:#F2F2F2; border-top:1.5px solid #D3D3D3; width:4.5px; height:50px;"></div>
+<img id="2-5" style="position:absolute; left:477px; top:80px; cursor:pointer; display:none;" src="images/gp2.png" />
+
+<div id="2-3" style="position:absolute; left:465px; top:360px; background-color:white; border-top:1.5px solid #D3D3D3; width:65px; height:75px;"></div>
+<img id="2-1" style="position:absolute; left:472.5px; top:310px; cursor:pointer;" src="images/ssc.png" />
+<img id="2-2" style="position:absolute; left:465px; top:320px;" title="Sulphate solution" src="images/ss.png" />
+<div style="position:absolute; left:470px; top:370px; background-color:white; padding:2.5px; border:1px solid black; font-size:10px; text-align:center;">Sulphate</br>solution</div>
+
+<div id="2-71" style="position:absolute; left:139px; top:345px; background-color:white; border-top:1.5px solid #D3D3D3; width:50px; height:95px; visibility:hidden;"></div>
+<img id="2-7" style="position:absolute; left:90px; top:275px; visibility:hidden; width:130px; cursor:pointer;" src="images/bottle1.png" />
+<img id="2-72" style="position:absolute; left:73px; top:299.49px; visibility:hidden;" src="images/water.png" />
+<!-- <img id="2-72" style="position:absolute; left:73px; top:311.5px; visibility:hidden;" src="images/water.png" /> -->
+
+<div id="2-411" style="position:absolute; left:50px; top:431px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px;"></div>
+<img id="2-41" style="position:absolute; left:50px; top:340px; " title="5ml" src="images/cf.png" />
+
+<div id="2-421" style="position:absolute; left:180px; top:431px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px; visibility:hidden;"></div>
+<img id="2-42" style="position:absolute; left:180px; top:340px; visibility:hidden;" title="10ml" src="images/cf.png" />
+
+<!-- <div id="2-431" style="position:absolute; left:310px; top:431px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px; visibility:hidden;"></div> -->
+<!-- <img id="2-43" style="position:absolute; left:310px; top:340px; visibility:hidden;" src="images/cf.png" /> -->
+
+<img id="2-61" style="position:absolute; left:250px; top:100px; visibility:hidden;" src="images/bulb.png"  />
+<img id="2-62" style="position:absolute; left:302px; top:208px; cursor:pointer; visibility:hidden;" src="images/uparrow.png"  />
+<img id="2-63" style="position:absolute; left:314px; top:220px; transform:rotate(180deg); cursor:pointer; visibility:hidden;" src="images/uparrow.png"  />
+
+<p id="p2-1" style="position:absolute; left:20px; top:150px; visibility:hidden; font-size:14px; color:red;">Press the up arrow on the bulb </br></br>to take 5ml of Sulphate solution</br></br> up into the pipette </p>
+<p id="p2-2" style="position:absolute; left:170px; top:150px; visibility:hidden; font-size:14px; color:red;">Press the down arrow on the bulb </br></br>to release Sulphate solution</br></br>into the flask </p>
+<p id="p2-3" style="position:absolute; left:100px; top:150px; visibility:hidden; font-size:14px; color:red;">Dilute the solution by adding distilled water</p>
+<span id="d2-1" style="background-color:black; color:white; width:350px; border-radius:5px; padding:5px; position:absolute; left:150px; top:150px; text-align:justify; font-size:14px; display:none;">
+<p>Similarly fill 6 flasks with Sulphate solution in 5ml increment and dilute it with distilled water.</p>
+<button id="ok2-1" value="OK" style="float:right;">OK</button>
+</span>
+</div>
+
+<div class="simsubscreen" id="canvas3" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;2&nbsp;</span>
+<p class="steptext">&nbsp;Prepare a blank solution and a sample solution by adding 100ml of distilled water and water sample to conical flasks respectively.</p>
+<div id="13-52" style="position:absolute; left:495px; top:370px; background-color:#F2F2F2; border-top:1.5px solid #D3D3D3; width:5.5px; height:75px; visibility:hidden;"></div>
+<div id="13-51" style="position:absolute; left:494px; top:360px; background-color:#F2F2F2; border-top:1.5px solid #D3D3D3; width:5.5px; height:130px;"></div>
+<div style="position:absolute; left:40px; top:435px; background-color:#ffffff; width:300px; height:112.5px;"></div>
+<img id="13-5" style="position:absolute; left:477px; top:80px; cursor:pointer; display:none;" src="images/gp2.png" />
+
+<div id="13-3" style="position:absolute; left:465px; top:360px; background-color:white; border-top:1.5px solid #D3D3D3; width:65px; height:75px;"></div>
+<img id="13-1" style="position:absolute; left:472.5px; top:310px; cursor:pointer;" src="images/ssc.png" />
+<img id="13-2" style="position:absolute; left:465px; top:320px;" title="Sulphate solution" src="images/ss.png" />
+<div id="13-8"style="position:absolute; left:472px; top:370px; background-color:white; padding:2.5px; border:1px solid black; font-size:10px; text-align:center;">Distilled </br>Water</div>
+<div id="13-8b"style="position:absolute; left:472px; top:370px; background-color:white; padding:2.5px; border:1px solid black; font-size:10px; text-align:center; visibility:hidden;">Sample </br>Water</div>
+
+<div id="13-71" style="position:absolute; left:139px; top:345px; background-color:white; border-top:1.5px solid #D3D3D3; width:50px; height:95px; visibility:hidden;"></div>
+<img id="13-7" style="position:absolute; left:90px; top:275px; visibility:hidden; width:130px; cursor:pointer;" src="images/bottle1.png" />
+<img id="13-72" style="position:absolute; left:73px; top:299.49px; visibility:hidden;" src="images/water.png" />
+
+<div id="13-411" style="position:absolute; left:50px; top:431px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px;"></div>
+<img id="13-41" style="position:absolute; left:50px; top:340px; " src="images/cf.png" />
+
+<div id="13-421" style="position:absolute; left:180px; top:431px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px; visibility:hidden;"></div>
+<img id="13-42" style="position:absolute; left:180px; top:340px; visibility:hidden;" src="images/cf.png" />
+
+<img id="13-61" style="position:absolute; left:250px; top:100px; visibility:hidden;" src="images/bulb.png"  />
+<img id="13-62" style="position:absolute; left:302px; top:208px; cursor:pointer; visibility:hidden;" src="images/uparrow.png"  />
+<img id="13-63" style="position:absolute; left:314px; top:220px; transform:rotate(180deg); cursor:pointer; visibility:hidden;" src="images/uparrow.png"  />
+
+<p id="p13-1" style="position:absolute; left:20px; top:150px; visibility:hidden; font-size:14px; color:red; text-align:center;">Press the up arrow on the bulb </br></br>to take distilled water up into  </br></br>the pipette </p>
+<p id="p13-2" style="position:absolute; left:170px; top:150px; visibility:hidden; font-size:14px; color:red; text-align:center;">Press the down arrow on the bulb </br></br>to release distilled water into </br></br>the flask </p>
+<p id="p13-3" style="position:absolute; left:100px; top:150px; visibility:hidden; font-size:14px; color:red;">Dilute the solution by adding distilled water</p>
+
+<p id="p13-9" style="position:absolute; left:50px; top:425px;  font-size:14px; color:red;text-align:center;">Blank </br> Solution</p>
+<p id="p13-10" style="position:absolute; left:180px; top:425px;  font-size:14px; color:red;text-align:center; visibility:hidden;">Sample </br> Solution</p>
+
+</div>
+
+<div class="simsubscreen" id="canvas4" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;3&nbsp;</span>
+<p class="steptext">&nbsp;Add 20ml of Buffer solution to conical flasks.</p>
+<div id="3-52" style="position:absolute; left:495px; top:370px; background-color:#F2F2F2; border-top:1.5px solid #D3D3D3; width:5.5px; height:75px;"></div>
+<div id="3-51" style="position:absolute; left:495.5px; top:360px; background-color:#F2F2F2; border-top:1.5px solid #D3D3D3; width:4.5px; height:50px;"></div>
+<div style="position:absolute; left:40px; top:435px; background-color:#ffffff; width:300px; height:112.5px;"></div>
+<img id="3-5" style="position:absolute; left:477px; top:80px; cursor:pointer; display:none;" src="images/gp2.png" />
+
+<div id="3-3" style="position:absolute; left:465px; top:360px; background-color:white; border-top:1.5px solid #D3D3D3; width:65px; height:75px;"></div>
+<img id="3-1" style="position:absolute; left:472.5px; top:310px; cursor:pointer;" src="images/ssc.png" />
+<img id="3-2" style="position:absolute; left:465px; top:320px;" title="Buffer solution" src="images/ss.png" />
+<div style="position:absolute; left:472px; top:370px; background-color:white; padding:2.5px; border:1px solid black; font-size:10px; text-align:center;">Buffer</br>solution</div>
+
+<div id="3-411" style="position:absolute; left:50px; top:400px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px;"></div>
+<img id="3-41" style="position:absolute; left:50px; top:340px; " src="images/cf.png" />
+
+<div id="3-421" style="position:absolute; left:180px; top:400px; background-color:white; border-top:1.5px solid #D3D3D3; width:60px; height:75px; visibility:hidden;"></div>
+<img id="3-42" style="position:absolute; left:180px; top:340px; visibility:hidden;" src="images/cf.png" />
+
+<img id="3-61" style="position:absolute; left:250px; top:100px; visibility:hidden;" src="images/bulb.png"  />
+<img id="3-62" style="position:absolute; left:302px; top:208px; cursor:pointer; visibility:hidden;" src="images/uparrow.png"  />
+<img id="3-63" style="position:absolute; left:314px; top:220px; transform:rotate(180deg); cursor:pointer; visibility:hidden;" src="images/uparrow.png"  />
+
+<p id="p3-1" style="position:absolute; left:20px; top:150px; visibility:hidden; font-size:14px; color:red;">Press the up arrow on the bulb </br></br>to take 20ml of Buffer solution</br></br> up into the pipette </p>
+<p id="p3-2" style="position:absolute; left:170px; top:150px; visibility:hidden; font-size:14px; color:red;">Press the down arrow on the bulb </br></br>to release Buffer solution</br></br>into the flask </p>
+<span id="d3-1" style="background-color:black; color:white; width:350px; border-radius:5px; padding:5px; position:absolute; left:150px; top:150px; text-align:justify; font-size:14px; display:none;">
+<p>Similarly add Buffer solution to conical flasks with Sulphate solution, blank solution and sample solution.</p>
+<button id="ok3-1" value="OK" style="float:right;">OK</button>
+</span>
+</div>
+
+<div class="simsubscreen" id="canvas5" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;4&nbsp;</span>
+<p class="steptext">&nbsp;Stir the solution in the flask using magnetic stirrer at constant speed.</p>
+<img style="position:absolute; left:100px; top:290px;" src="images/ewm2.png"/>
+<img id="4-1" style="position:absolute; left:450px; top:325px; cursor:pointer;" src="images/cf1.png"/>
+<img id="4-14" style="position:absolute; left:197px; top:175px; display:none;"  src="images/powder.png"/>
+<div id="4-4" style="position:absolute; left:169.5px; top:275px; width:58px; height:50px; background-color:white; border-top:solid 1px #D3D3D3; visibility:hidden; border-radius:9px;" ></div>
+<img id="4-2" style="position:absolute; left:450px; top:282px; visibility:hidden;" src="images/cf2.png"/>
+<img id="4-81" style="position:absolute; left:186.5px; top:210px; cursor:pointer; visibility:hidden; width:25px;" title="stir bar" src="images/bar.png"/>
+<img id="4-3" style="position:absolute; left:160px; top:220px; visibility:hidden;" src="images/cf3.png"/>
+<img style="position:absolute; left:100px; top:312px;" src="images/ewm.png"/>
+<div id="4-5" style="position:absolute; left:187.5px; top:364px; cursor:pointer; width:17px; height:38px;" title="Switch" ></div>
+<img id="4-6" style="position:absolute; left:187.5px; top:364px; cursor:pointer; visibility:hidden;" src="images/switch.png"/>
+<img id="4-7" style="position:absolute; left:450px; top:392.5px; visibility:hidden; width:80px" src="images/glassTray.png"/>
+<img id="4-8" style="position:absolute; left:471px; top:399.5px; cursor:pointer; visibility:hidden;" title="stir bar" src="images/bar.png"/>
+<img id="4-9" style="position:absolute; left:471px; top:334px; cursor:pointer; visibility:hidden;" src="images/barhand.png"/>
+<p id="p4-1" style="position:absolute; left:380px; top:200px; color:red; visibility:hidden;" ></p>
+<span id="d4-1" style="background-color:black; color:white; width:350px; border-radius:5px; padding:5px; position:absolute; left:300px; top:130px; text-align:justify; font-size:14px; display:none;">
+<p>Stirr the solution in the remaining nine flasks.</p>
+<button id="ok4-1" value="OK" style="float:right;">OK</button>
+</span>
+</div>
+
+<div class="simsubscreen" id="canvas6" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;5&nbsp;</span>
+<p class="steptext">&nbsp;Add a spatula of Barium Chloride crystals. Then stir the solution for 60-65 seconds and allow it to rest for 5 minutes.</p>
+<img id="5-14" style="position:absolute; left:191px; top:312px; display:none;"  src="images/powder.png"/>
+<div id="5-4" style="position:absolute; left:160px; top:378px; width:59px; height:35px; background-color:white; border-top:solid 1px #D3D3D3; " ></div>
+<!-- <div id="5-41" style="position:absolute; left:155px; top:364px; width:82px; height:52px; background-color:white; border-top:solid 1px #D3D3D3; visibility:hidden;" ></div> -->
+<img id="5-3" style="position:absolute; left:160px; top:322.5px; " src="images/cf.png"/>
+<img id="5-5" style="position:absolute; left:152.5px; top:280px; visibility:hidden;" src="images/cf4.png"/>
+
+<img id="5-11" style="position:absolute; left:530px; top:250px; display:none; cursor:pointer; width:95px;" src="images/spatula.png"/>
+<img id="5-12" style="position:absolute; left:518px; top:335px; visibility:hidden; width:95px; cursor:pointer;" src="images/spatula2.png"/>
+<img id="5-10" style="position:absolute; left:450px; top:372px; display:none; " src="images/KI1.png"/>
+<img id="5-13" style="position:absolute; left:450px; top:372px; visibility:hidden; " src="images/KI2.png"/>
+<span id="d5-1" style="background-color:black; color:white; width:250px; border-radius:5px; padding:5px; position:absolute; left:300px; top:130px; text-align:justify; font-size:14px; display:none;">
+<p>Add a spatula of Barium Chloride crystals to all the remaining flasks.</p>
+<button id="ok5-1" value="OK" style="float:right;">OK</button>
+</span>
+</div>
+
+<div id="canvas7" style="visibility:hidden;">
+<h1 id="6-1" style="position:absolute; left:100px; top:250px; color:grey; display:none;" >Calibration of Spectrophotometer</h1>
+</div>
+
+<div class="simsubscreen" id="canvas8" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;6&nbsp;</span>
+<p class="steptext">&nbsp;Fill the cuvette with blank solution and place it in Spectrophotometer. Set the wavelength to 420nm by adjusting wavelength control knob.</p>
+<div id="7-2a" style="position:absolute; left:400px; top:385.5px; width:59px; height:35px; background-color:white; border-top:solid 1px #D3D3D3;" ></div>
+<img id="7-2b" style="position:absolute; left:165px; top:335px; visibility:hidden;" src="images/solution.png"/>
+<img id="7-1" style="position:absolute; left:400px; top:330px; cursor:pointer;" src="images/cf.png"/>
+<img id="7-2c" style="position:absolute; left:159px; top:345px; visibility:hidden;" src="images/solution2.png"/>
+
+<img id="7-6a" style="position:absolute; left:450px; top:100px; visibility:hidden; width:70px;" src="images/switchboard.png"/>
+<img id="7-6b" style="position:absolute; left:201px; top:126px; visibility:hidden; width:280px;" src="images/plug.png"/>
+<img id="7-6off" style="position:absolute; left:492.5px; top:124px; visibility:hidden; width:15px; height:23px; cursor:pointer;" src="images/switch2.png"/>
+<img id="7-6on" style="position:absolute; left:492.5px; top:124px; visibility:hidden; width:15px; height:23px; cursor:pointer; transform:rotate(180deg);" src="images/switch2.png"/>
+
+<div id="7blank" style="position:absolute; left:325px; top:237px; width:120px; height:18px; background-color:#FFFFFF; border:solid 1px #000000;visibility:hidden;" ></div>
+<div id="7-7W" style="position:absolute; left:325px; top:237px; width:51px; height:18px; background-color:#D3D3D3; border:solid 1px #000000; visibility:hidden; text-align:center; color:red;" >390</div>
+<div id="7-7D" style="position:absolute; left:380px; top:237px; width:50px; height:18px;  background-color:#D3D3D3; border:solid 1px #000000; visibility:hidden; text-align:center; color:red;" >1.00</div>
+
+<img id="7-5a" style="position:absolute; left:270px; top:209px; visibility:hidden; width:430px;" src="images/spectrophotometer.png"/>
+
+<div id="7-7mt" style="position:absolute; left:446px; top:222.5px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+<div id="7-7ma" style="position:absolute; left:446px; top:235.25px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+<div id="7-7mc" style="position:absolute; left:446px; top:248px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+<div id="7-7mf" style="position:absolute; left:446px; top:260px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+
+<img id="7-9a" style="position:absolute; left:135px; top:319px; visibility:hidden;" src="images/ch.png"/>
+<img id="7-9b" style="position:absolute; left:382px; top:322px; visibility:hidden;" src="images/cws.png"/>
+
+<img id="7-4" style="position:absolute; left:149.5px; top:415px;" src="images/cs.png"/>
+<img id="7-3" style="position:absolute; left:150px; top:350px;  cursor:pointer;" src="images/cuvette.png"/>
+<img id="7-5b" style="position:absolute; left:270px; top:325px; visibility:hidden;" src="images/sp1.png"/>
+<div id="7-10" style="position:absolute; left:372.5px; top:310px; width:50px; height:30px;  background-color:transparent; cursor:pointer; visibility:hidden;"></div>
+<img id="7-5f" style="position:absolute; left:371px; top:314px; visibility:hidden; width:50px; cursor:pointer; " src="images/spcap.png"/>
+
+<img id="7-5c" style="position:absolute; left:390px; top:365px; visibility:hidden; width:30px; cursor:pointer;" title="0%T" alt="Zero control knob" src="images/knob1.png"/>
+<img id="7-5d" style="position:absolute; left:552px; top:366.5px; visibility:hidden; width:30px; cursor:pointer;" title="100%T/0A" alt="Transmittance and absorbance control knob" src="images/knob2.png" />
+<img id="7-5e" style="position:absolute; left:575px; top:314px; visibility:hidden; width:30px; cursor:pointer; " title="Wavelength control knob" src="images/wknob.png"/>
+
+<img id="7-8" style="position:absolute; left:390px; top:365px;  visibility:hidden;" src="images/hand3.png"/>
+<img id="7-8ca" style="position:absolute; left:370.5px; top:228px; visibility:hidden;" src="images/hc.png"/>
+</div>
+
+<div id="canvas9" style="visibility:hidden;">
+<h1 id="8-1" style="position:absolute;left:0px; top:250px; color:grey; display:none; text-align:center;">Measurement of Absorbance and Transmittance</h1>
+</div>
+
+<div class="simsubscreen" id="canvas10" style="visibility:hidden;">
+<strong class="incanvas">STEP</strong>
+<span class="circlebg">&nbsp;7&nbsp;</span>
+<p class="steptext">&nbsp;Fill the cuvette with Sulphate solution in the flask. Place it in Spectrophotometer and note down absorbance and transmittance values for each solution.</p>
+
+<span id="9-99" class="tooltip" style="border-bottom:1px dotted ; color:red; position:absolute; top:90px; left:50px; text-align:justify; "> Description
+<span  class="tooltiptext" style="font-size:14px; text-align:justify; "><strong style="color:red;">Absorbance</strong> is the amount of light absorbed by a sample.</br>It is calculated from T or %T using the following equations:</br>
+A = - log10 T  or   A = log10 (1/T)</br>
+A = 2 - log10 %T</br>
+</br>The amount of monochromatic light absorbed by a sample is determined by comparing the intensities of the incident light (I<sub>o</sub>) and transmitted light(I). The ratio of the intensity of the transmitted light (I) to the intensity of the incident light (I<sub>o</sub>) is called <strong><span style="color:red;">Transmittance(T)</span></strong>.</span>
+</span>
+
+<div id="9-2a" style="position:absolute; left:400px; top:385.5px; width:59px; height:35px; background-color:white; border-top:solid 1px #D3D3D3;" ></div>
+<img id="9-2b" style="position:absolute; left:165px; top:335px; visibility:hidden;" src="images/solution.png"/>
+<img id="9-1" style="position:absolute; left:400px; top:330px; cursor:pointer;" src="images/cf.png"/>
+<img id="9-2c" style="position:absolute; left:159px; top:345px; visibility:hidden;" src="images/solution2.png"/>
+
+<img id="9-6a" style="position:absolute; left:450px; top:100px; visibility:hidden; width:70px;" src="images/switchboard.png"/>
+<img id="9-6b" style="position:absolute; left:201px; top:126px; visibility:hidden; width:280px;" src="images/plug.png"/>
+<img id="9-6off" style="position:absolute; left:492.5px; top:124px; visibility:hidden; width:15px; height:23px; cursor:pointer;" src="images/switch2.png"/>
+<img id="9-6on" style="position:absolute; left:492.5px; top:124px; visibility:hidden; width:15px; height:23px; cursor:pointer; transform:rotate(180deg);" src="images/switch2.png"/>
+
+<div id="9blank" style="position:absolute; left:325px; top:237px; width:120px; height:18px; background-color:#FFFFFF; border:solid 1px #000000;visibility:hidden;" ></div>
+<div id="9-7W" style="position:absolute; left:325px; top:237px; width:51px; height:18px; background-color:#D3D3D3; border:solid 1px #000000; visibility:hidden; text-align:center; color:red;" >390</div>
+<div id="9-7D" style="position:absolute; left:380px; top:237px; width:50px; height:18px;  background-color:#D3D3D3; border:solid 1px #000000; visibility:hidden; text-align:center; color:red;" >1.00</div>
+
+<img id="9-5a" style="position:absolute; left:270px; top:209px; visibility:hidden; width:430px;" src="images/spectrophotometer.png"/>
+
+<div id="9-7mt" style="position:absolute; left:446px; top:222.5px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+<div id="9-7ma" style="position:absolute; left:446px; top:235.25px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+<div id="9-7mc" style="position:absolute; left:446px; top:248px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+<div id="9-7mf" style="position:absolute; left:446px; top:260px; width:6px; height:6px;  background-color:#800000; border:solid 1px #000000; border-radius:10px; visibility:hidden;" ></div>
+
+<img id="9-9a" style="position:absolute; left:135px; top:319px; visibility:hidden;" src="images/ch.png"/>
+<img id="9-9b" style="position:absolute; left:382px; top:322px; visibility:hidden;" src="images/cws.png"/>
+
+<img id="9-4" style="position:absolute; left:149.5px; top:415px;" src="images/cs.png"/>
+<img id="9-3" style="position:absolute; left:150px; top:350px;  cursor:pointer;" src="images/cuvette.png"/>
+<img id="9-5b" style="position:absolute; left:270px; top:325px; visibility:hidden;" src="images/sp1.png"/>
+<div id="9-10" style="position:absolute; left:372.5px; top:310px; width:50px; height:30px;  background-color:transparent; cursor:pointer; visibility:hidden;"></div>
+<img id="9-5f" style="position:absolute; left:371px; top:314px; visibility:hidden; width:50px; cursor:pointer; " src="images/spcap.png"/>
+
+<img id="9-5c" style="position:absolute; left:390px; top:365px; visibility:hidden; width:30px; cursor:pointer;" title="0%T" alt="Zero control knob" src="images/knob1.png"/>
+<img id="9-5d" style="position:absolute; left:552px; top:366.5px; visibility:hidden; width:30px; cursor:pointer;" title="100%T/0A" alt="Transmittance and absorbance control knob" src="images/knob2.png" />
+<img id="9-5e" style="position:absolute; left:575px; top:314px; visibility:hidden; width:30px; cursor:pointer; " title="Wavelength control knob" src="images/wknob.png"/>
+
+<img id="9-8" style="position:absolute; left:390px; top:365px;  visibility:hidden;" src="images/hand3.png"/>
+<img id="9-8ca" style="position:absolute; left:370.5px; top:228px; visibility:hidden;" src="images/hc.png"/>
+
+<div id="9-11" style="position:absolute; left:522.5px; top:235px; width:40px; height:30px;  background-color:transparent; cursor:pointer; visibility:hidden;"></div>
+
+<span id="9-12" style="position:absolute; left:0px; top:120px; text-align:center; padding:10px; display:none; border:1px solid black; background-color:black; border-radius:5px; width:300px;">
+<p style="color:white; font-size:15px; text-align:justify;" >Note down the absorbance and transmittance value of all the remaining solutions.<p>
+<input id="b9-1" type="button" style="float:right;" value="OK" />
+
+</span>
+
+</div>
+
+<div id="canvas11" class="simsubscreen" style="visibility:hidden;">
+<strong class="incanvas" id="ob"><h2>Observations: </h2></strong>
+<table id="t11-1" style="position:absolute; left:10px; border:1px solid black; text-align:center;">
+<tr>
+<th>Sample</th>
+<th>Sulphate concentration </br>(mg/l)</th>
+<th>Absorbance</th>
+<th>Transmittance</th>
+</tr>
+</table>
+</div>
+
+<div class="simsubscreennum" id="canvas12" style="visibility:hidden">
+<h2 style="position:absolute; left:250px; top:30px;">Characteristic Curves</h2>
+<p id="g1" style="position:absolute; left:50px; top:70px; border:1px solid black; cursor:pointer; padding:2.5px;">Sulphate Concentration v/s Absorbance</p>
+<p id="g2" style="position:absolute; left:400px; top:70px; border:1px solid black; cursor:pointer; padding:2.5px;">Sulphate Concentration v/s Transmittance</p>
+
+<div id="chartContainer" style="height:380px; width:600px; margin-left:60px; margin-right:100px; margin-top:90px"></div>
+<div style="height: 20px; width: 150px; left:50px; top:497px; position:absolute; background-color:white;"></div>
+<div style="height: 20px; width: 250px; left:500px; top:495px; position:absolute; background-color:white;"></div>
+
+<div id="q12" style="position:absolute; left:50px; top:497px; height:60px; width:640px;  font-size:14px; visibility:hidden;">
+<p id="p12-1">Sulphate concentration of tap water = <input id="wa" type="text" style="border:none; border-bottom:2px solid #ea3f49; width:65px;"/>mg/l</p>
+<p id="p12-2">Sulphate concentration of water sample = <input id="tw" type="text" style="border:none; border-bottom:2px solid #33cb6b; width:65px; "/>mg/l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="check1" type="button" name="Check" value="Check" />&nbsp;&nbsp;&nbsp;<input id="result1" type="button" name="RESULT" value="Result"  style="visibility:hidden;"/></p>
+<p id="r1" style="position:absolute; left:385px; top:-15px; color:#32CD32; font-size:22px; visibility:hidden;" >&#10004;</p>
+<p id="r2" style="position:absolute; left:395px; top:20px; color:#32CD32; font-size:22px; visibility:hidden;" >&#10004;</p>
+<p id="w1" style="position:absolute; left:385px; top:-15px; color:red; font-size:22px; visibility:hidden;"  >&#10008;</p>
+<p id="w2" style="position:absolute; left:395px; top:20px; color:red; font-size:22px; visibility:hidden;"  >&#10008;</p>
+</div>
+</div>
+
+<div id="canvas13" class="simsubscreen" style="visibility:hidden;">
+<strong class="incanvas" id="ob"><h3>Inference: </h3></strong>
+<div id="inference" style="position:absolute; left:100px; top:100px; font-size:14px; background-color:grey; color:white; padding:7.5px; border-radius:5px;">
+<p>What is the acceptable range of Sulphate in drinking water?</p>
+<input type="radio" name="inf" value="1">&nbsp;0mg/l - 100mg/l</br>
+<input type="radio" name="inf" value="2">&nbsp;100mg/l - 150mg/l</br>
+<input type="radio" name="inf" value="3">&nbsp;150mg/l - 200mg/l</br>
+<input type="radio" name="inf" value="4">&nbsp;200mg/l - 250mg/l</br></br>
+<input type="button" value="Submit" onclick="checkInference();"/>
+<p id="ans" style="visibility:hidden;"></p>
+</div>
+<p id="infAns" style="display:none; font-size:16px; font-weight:bold; text-align:justify; width:700px;"></p>
+</div>
+
+<div id="questDiv" style="position:absolute; font-size:16px; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden;">
+<p id="q"></p><select id="answer" >
+</select>
+<p id="a"></p>
+</div>
+
+<!-- nextButton -->
+<div id="nav">
+<img id="nextButton" onclick="navNext()" src="images/Next.png" />
+</div>
+
+<!--Blinking Arrow	-->
+<img class ="" id="arrow1" style="visibility:hidden;" src="images/arrow1.png"/>
+
+<div id="copyright"> &copy; 2018 - <script>document.write(new Date().getFullYear())</script> SOLVE - The Virtual Lab @ NITK Surathkal, Department of Water Resources & Ocean Engineering</div>
+</div>
+<script src="../assets/js/iframeResize.js"></script></body>
+</html>
+<!---comments -->
